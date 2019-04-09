@@ -5,7 +5,8 @@ class Create extends Component {
     state = {
         name: '',
         age: '',
-        color: ''
+        color: '',
+        url: ''
     }
 
     // handleChange = (event, fieldName) => {
@@ -17,18 +18,29 @@ class Create extends Component {
     }
 
     handleSubmit = (event) => {
-        fetch('https://jfddl7-api-b832f.firebaseio.com/cats.json', {
-            method: 'POST',
-            body: JSON.stringify({
-                ...this.state,
-                role: faker.name.jobTitle()
+
+        const headers = {
+            'x-api-key': 'd24b427d-578e-4609-86bd-b36555c3875c'
+        }
+        fetch('https://api.thecatapi.com/v1/images/search', { headers })
+            .then(response => response.json())
+            .then(responseData => {
+                this.setState({ url: responseData[0].url }, () => {
+                    fetch('https://jfddl7-api-b832f.firebaseio.com/cats.json', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            ...this.state,
+                            role: faker.name.jobTitle()
+                        })
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                this.props.history.push('/');
+                            }
+                        });
+                });
             })
-        })
-            .then(response => {
-                if (response.ok) {
-                    this.props.history.push('/');
-                }
-            })
+
         event.preventDefault();
     }
 

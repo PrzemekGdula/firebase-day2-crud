@@ -17,10 +17,14 @@ class Create extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.state);
+        fetch('https://jfddl7-api-b832f.firebaseio.com/cats.json', {
+            method: 'POST',
+            body: JSON.stringify(this.state)
+        });
         event.preventDefault();
     }
-    
+
+
     render() {
         return (
             <div>

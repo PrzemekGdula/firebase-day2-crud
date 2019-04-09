@@ -18,10 +18,26 @@ class Create extends Component {
     }
 
     handleSubmit = (event) => {
+        // handleSubmit = async (event) => {
 
         const headers = {
             'x-api-key': 'd24b427d-578e-4609-86bd-b36555c3875c'
         }
+        // let response = await fetch('https://api.thecatapi.com/v1/images/search', { headers });
+        // let responseData = await response.json();
+        // await this.setState({ url: responseData[0].url });
+
+        // response = await fetch('https://jfddl7-api-b832f.firebaseio.com/cats.json', {
+        //   method: 'POST',
+        //   body: JSON.stringify({
+        //     ...this.state,
+        //     role: faker.name.jobTitle()
+        //   })
+        // });
+        // if (response.ok) {
+        //   this.props.history.push('/');
+        // }
+
         fetch('https://api.thecatapi.com/v1/images/search', { headers })
             .then(response => response.json())
             .then(responseData => {

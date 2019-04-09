@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 class List extends Component {
 
@@ -12,6 +12,9 @@ class List extends Component {
             .then(response => response.json())
             .then(responseData => {
                 const data = [];
+                if (responseData === null) {
+                    return;
+                }
                 Object.entries(responseData).forEach(elem => {
                     data.push({
                         id: elem[0],
@@ -51,8 +54,7 @@ class List extends Component {
             <div>
                 {this.state.data.map(elem => (
                     <div key={elem.id}>
-                        <Link to={'/read/&{elem.id}'}>{elem.name}</Link> <button onClick={() =>
-                            this.handleRemove(elem.id)}>Remove</button>
+                        <Link to={`/read/${elem.id}`}>{elem.name}</Link> <button onClick={() => this.handleRemove(elem.id)}>Remove</button>
                     </div>
                 ))}
             </div>

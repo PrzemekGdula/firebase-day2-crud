@@ -4,9 +4,7 @@ import React, { Component } from 'react';
 class List extends Component {
 
     state = {
-        data: [
-            { id: 1, name: 'Lorem' }, { id: 2, name: 'Ipsum' }, { id: 3, name: 'Sit' }
-        ]
+        data: []
     }
 
     componentDidMount() {

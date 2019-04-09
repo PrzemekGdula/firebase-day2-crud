@@ -54,7 +54,7 @@ class List extends Component {
             <div>
                 {this.state.data.map(elem => (
                     <div key={elem.id}>
-                        <Link to={`/read/${elem.id}`}>{elem.name}</Link> <button onClick={() => this.handleRemove(elem.id)}>Remove</button>
+                        <Link to={`/read/${elem.id}`}>{elem.name}</Link> <Link to={`/update/${elem.id}`}>Update</Link> <button onClick={() => this.handleRemove(elem.id)}>Remove</button>
                     </div>
                 ))}
             </div>

@@ -20,12 +20,14 @@ class Read extends Component {
                     Name: {this.state.name}
                 </div>
                 <div>
-                    Age: {this.state.Age}
+                    Age: {this.state.age}
                 </div>
                 <div>
-                    Color: {this.state.Color}
+                    Color: {this.state.color}
                 </div>
-
+                <div>
+                    Role: {this.state.role || null}
+                </div>
             </div>
         );
     }

@@ -1,34 +1,36 @@
 import React, { Component } from 'react';
-
+import faker from 'faker';
 class Create extends Component {
 
     state = {
         name: '',
-        age: ''
+        age: '',
+        color: ''
     }
 
     // handleChange = (event, fieldName) => {
-    // this.setState({ [fieldName]: event.target.value });
+    //   this.setState({ [fieldName]: event.target.value });
     // }
 
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
-
     }
 
     handleSubmit = (event) => {
         fetch('https://jfddl7-api-b832f.firebaseio.com/cats.json', {
             method: 'POST',
-            body: JSON.stringify(this.state)
+            body: JSON.stringify({
+                ...this.state,
+                role: faker.name.jobTitle()
+            })
         })
             .then(response => {
                 if (response.ok) {
-                    this.props.history.push('/')
+                    this.props.history.push('/');
                 }
             })
         event.preventDefault();
     }
-
 
     render() {
         return (

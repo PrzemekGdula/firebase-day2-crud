@@ -6,7 +6,7 @@ class List extends Component {
         data: []
     }
 
-    componentDidMount() {
+    fetchData = () => {
         fetch('https://jfddl7-api-b832f.firebaseio.com/cats.json')
             .then(response => response.json())
             .then(responseData => {
@@ -30,10 +30,19 @@ class List extends Component {
             })
     }
 
+    componentDidMount() {
+        this.fetchData();
+    }
+
     handleRemove = (id) => {
         fetch(`https://jfddl7-api-b832f.firebaseio.com/cats/${id}.json`, {
             method: 'DELETE'
-        });
+        })
+            .then(response => {
+                if (response.ok) {
+                    this.fetchData();
+                }
+            });
     }
 
     render() {

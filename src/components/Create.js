@@ -20,7 +20,12 @@ class Create extends Component {
         fetch('https://jfddl7-api-b832f.firebaseio.com/cats.json', {
             method: 'POST',
             body: JSON.stringify(this.state)
-        });
+        })
+            .then(response => {
+                if (response.ok) {
+                    this.props.history.push('/')
+                }
+            })
         event.preventDefault();
     }
 

@@ -5,6 +5,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import List from './components/List';
 import Create from './components/Create';
+import Read from './components/Read';
+
+
 
 class App extends Component {
   render() {
@@ -13,6 +16,7 @@ class App extends Component {
         <Menu />
         <Route exact path="/" component={List} />
         <Route path="/create" component={Create} />
+        <Route path="/read/:id" component={Read} />
       </BrowserRouter>
     );
   }
